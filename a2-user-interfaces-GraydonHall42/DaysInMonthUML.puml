@@ -1,0 +1,26 @@
+@startuml
+class DaysTester [[java:DaysTester]] {
+	+{static} main(args: String[]): void
+}
+class MonthJFrame [[java:MonthJFrame]] {
+	-inputField: JTextField
+	-display: JTextArea
+	+MonthJFrame(title: String)
+	+actionPerformed(evt: ActionEvent): void
+	+{static} main(args: String[]): void
+}
+class JFrame {
+}
+interface ActionListener {
+}
+class Days [[java:Days]] {
+	-Days()
+	+{static} howManyDays(monthIndex: int): int
+}
+
+ActionListener <|.. MonthJFrame
+JFrame <|-- MonthJFrame
+Days <-- DaysTester: Uses
+Days <-- MonthJFrame: Uses
+
+@enduml

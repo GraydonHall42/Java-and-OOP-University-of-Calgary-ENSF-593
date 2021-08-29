@@ -1,0 +1,37 @@
+@startuml
+
+
+class BankCD [[java:BankCD]] {
+	-principal: double
+	-rate: double
+	-years: double
+	+BankCD(p: double, r: double, y: double)
+	+calcYearly(): double
+	+calcDaily(): double
+}
+
+
+class BankCDApp [[java:BankCDApp]] {
+	-bank: BankCD
+	-reader: KeyboardReader
+	+BankCDApp()
+	+run(): void
+	+{static} main(args: String[]): void
+}
+
+
+class KeyboardReader [[java:KeyboardReader]] {
+	-reader: BufferedReader
+	+KeyboardReader()
+	+getKeyboardInput(): String
+	+getKeyboardInteger(): int
+	+getKeyboardDouble(): double
+	+prompt(s: String): void
+	+display(s: String): void
+	-readKeyboard(): String
+}
+
+BankCDApp "1" *-- "1" BankCD : contains
+BankCDApp "1" *-- "1" KeyboardReader : contains
+
+@enduml

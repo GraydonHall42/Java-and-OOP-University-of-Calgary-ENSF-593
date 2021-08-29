@@ -1,0 +1,31 @@
+@startuml
+class NewtonApp [[java:NewtonApp]] {
+    -reader: KeyboardReader
+    - calc: NewtonTester
+	+NewtonApp()
+	+run(): void
+	+{static} main(args: String[]): void
+}
+class KeyboardReader [[java:KeyboardReader]] {
+}
+
+class NewtonTester [[java:NewtonTester]] {
+}
+
+
+
+class NewtonTester [[java:NewtonTester]] {
+	-N: double
+	-maxError: double
+	-guess: double
+	-numIterations: double
+	+NewtonTester(N: double, maxError: double, guess: double)
+	+sqrt(): double
+	+getNumIterations(): double
+}
+class KeyboardReader [[java:KeyboardReader]] {}
+
+NewtonApp *-- "1" NewtonTester : contains
+NewtonApp *-- "1" KeyboardReader : contains
+
+@enduml

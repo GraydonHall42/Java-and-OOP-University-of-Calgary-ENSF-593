@@ -1,0 +1,51 @@
+@startuml
+class Cat [[java:Cat]] {
+	+Cat()
+	+speak(): String
+	+eat(): String
+	+doATrick(): String
+}
+class Cow [[java:Cow]] {
+	+Cow()
+	+speak(): String
+	+eat(): String
+}
+interface Predator [[java:Predator]] {
+	preysOn(a: Animal): boolean
+}
+class Dog [[java:Dog]] {
+	+Dog()
+	+speak(): String
+	+eat(): String
+	+doATrick(): String
+}
+
+interface Trainable [[java:Trainable]] {
+	doATrick(): String
+}
+class Wolf [[java:Wolf]] {
+	+speak(): String
+	+Wolf()
+	+eat(): String
+	+preysOn(a: Animal): boolean
+}
+abstract class Animal [[java:Animal]] {
+	#kind: String
+	+Animal()
+	+toString(): String
+	+{abstract} speak(): String
+	+{abstract} eat(): String
+	+{static} main(args: String[]): void
+}
+
+Animal <|-- Cat
+Animal <|-- Wolf
+Animal <|-- Dog
+Animal <|-- Cow
+
+Predator <|.. Wolf
+
+Trainable <|.. Dog
+Trainable <|.. Cat
+
+@enduml

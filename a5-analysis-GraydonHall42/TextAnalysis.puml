@@ -1,0 +1,37 @@
+@startuml
+
+class JFrame {
+}
+
+interface ActionListener {
+}
+
+class TextAnalysisGUI [[java:TextAnalysisGUI]] {
+	-prompt: JLabel
+	-outputMessage: JLabel
+	-inField: JTextArea
+	-display: JTextArea
+	-bClear: JButton
+	-bAnalyze: JButton
+	-scrollableInput: JScrollPane
+	+TextAnalysisGUI()
+	+actionPerformed(e: ActionEvent): void
+	+{static} main(args: String[]): void
+}
+
+class TextAnalyzer [[java:TextAnalyzer]] {
+	-numOfSentences: int
+	-numOfWords: int
+	+TextAnalyzer(text: String)
+	+toString(): String
+	-{static} countWords(text: String): int
+	-{static} countSentences(text: String): int
+	+getNumOfSentences(): int
+	+getNumOfWords(): int
+}
+
+JFrame <|-- TextAnalysisGUI
+TextAnalysisGUI *-- "1" TextAnalyzer : contains
+ActionListener <|.. TextAnalysisGUI
+
+@enduml
